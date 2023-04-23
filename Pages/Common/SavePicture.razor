@@ -1,0 +1,50 @@
+﻿@page "/save-picture/{PictureUrl}/{Id}"
+
+@inherits Stage1Base.SavePicture
+
+<h3>Save Picture</h3>
+
+<div class="row content">
+    <div class="col-4">
+        <input type="button" class="btnNextPrev" value="   < BACK   " @onclick="()=>Return()" />
+    </div>
+</div>
+
+<div>
+     <div class="card">
+        <div class="card-body">
+            <img src="@PictureUrl" class="responsive">
+        </div>
+    </div>
+    <div class="spacer" />
+</div>
+
+
+<EditForm Model=@picture OnValidSubmit =@HandleSubmit>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="PictureName">Picture Name</label>
+        <InputText id="PictureName" class="form-control" @bind-Value="picture!.Name" />
+    </div>
+
+    <div class="form-group">
+        <label for="Power">Power</label>
+        <InputText id="Power" class="form-control" @bind-Value="picture.Power" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="Age">Age</label>
+        <InputNumber id="Age" class="form-control" @bind-Value="picture.Age" />
+    </div>
+
+    <br />
+
+    <p>
+        <button class="btn btn-primary" type="submit">Save</button>
+
+        <button class="btn btn-secondary" type="button" @onclick="()=>Return()">Cancel</button>
+    </p>
+</EditForm>

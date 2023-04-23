@@ -1,0 +1,28 @@
+﻿@page "/my-pictures"
+
+@inherits Stage1Base.MyPictures
+
+<h3>My Pictures</h3>
+
+<div class="row content">
+    <div class="col-4">
+        <input type="button" class="btnNextPrev" value="   < BACK   " @onclick="()=>Return()" />
+    </div>
+</div>
+
+
+<Virtualize Items="@pictures">
+
+    <div class="row content">
+        <div class="col-2">
+            <a href="@context!.Url"><img src="@context!.Url" class="responsive" /></a>
+        </div>
+
+        <div class="col-6">
+            Name: @context!.Name <br />
+            Power: @context!.Power <br />
+            Age: @context!.Age
+        </div>
+    </div>
+
+</Virtualize>
